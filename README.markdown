@@ -1,6 +1,8 @@
 jQuery .scrollintoview() plugin <sup>(with :scrollable selector filter)</sup>
 ==
-This plugin makes it easy to scroll any element on your page into view. It scrolls in a user friendly way using animation (speed can be configured) so users never loose track where they moved within the current page. Default browser functionality simply jumps to some element which may confuse users greatly. This kind of behaviour is considered bad user experience, since pages look different above and below the fold. This means that users may as well think they were redirected to a different site (since it looks different) or at least page within the same site.
+This plugin makes it easy to scroll any element on your page into view, smoothly.
+
+This plugin scrolls in a user friendly way using animation (speed can be configured) so users never loose track where they moved within the current page. In contrast, the default browser functionality simply jumps to some element which may confuse users greatly. This kind of behaviour is considered bad user experience, since pages look different above and below the fold. This means that users may as well think they were redirected to a different site (since it looks different) or at least page within the same site.
 
 How to use this plugin
 --
@@ -18,6 +20,9 @@ And that's it really. This is of course if we use defaults. It also supports som
     * **y** or **vertical**
     * **both** - scrolling will perform in both directions; since scrolling is performed only when element is actually out of view this simply means that scrolling may only perform in one direction even though you set it to scroll in both directions; *both* is therefore the most reliable scrolling option that will make sure your element will be visible
 * **complete** function - this is the complete handler function that will get called when scrolling completes; it runs in context of scrollable element; this function will be called regardless whether scrolling will perform or not (when element already in view); *but* it won't get called when there's no scrollable element (context can't be determined)
+* **viewPadding** (default: 0) - either a number, or an object with fields "x" and "y" (both optional; sets the space to require between the element and the scrollable's edge (in pixels)
+
+Example:
 
 ```javascript
 $("some_selector").scrollintoview({
@@ -25,7 +30,8 @@ $("some_selector").scrollintoview({
     direction: "vertical",
     complete: function() {
         // highlight the element so user's focus gets where it needs to be
-    }
+    },
+    viewPadding: 20
 });
 ```
 
@@ -35,7 +41,7 @@ This plugin scrolls a particular element into view similar to browser built-in f
 
 * it only scrolls to element when element is actually out of view; if element is in view (anywhere in visible document area), no scrolling will be performed;
 * it scrolls using animation effects; when scrolling is performed users know exactly they're not redirected anywhere, but actually see that they're simply moved somewhere else within the same page (as well as in which direction they moved);
-* there's always the smallest amount of scrolling being applied; when element is above the visible document area it will be scrolled to the top of visible area; when element is below the visible are it will be scrolled to the bottom of visible area; this is the most consistent way of scrolling - when scrolling would always be to top it sometimes couldn't scroll an element to top when it was close to the bottom of scrollable container (thus scrolling would be unpredictable);
+* it uses only the smallest amount of scrolling required to make the element visible; when element is above the visible document area it will be scrolled to the top of visible area; when element is below the visible are it will be scrolled to the bottom of visible area; this is the most consistent way of scrolling - when scrolling would always be to top it sometimes couldn't scroll an element to top when it was close to the bottom of scrollable container (thus scrolling would be unpredictable);
 * when element's size exceeds the size of visible document area its top-left corner is the one that will be scrolled to;
 
 What about :scrollable selector filter

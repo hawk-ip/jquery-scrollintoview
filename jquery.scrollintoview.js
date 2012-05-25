@@ -116,9 +116,9 @@
 
 				var rel = {
 					top: dim.e.rect.top - (dim.s.rect.top + dim.s.border.top) - options.viewPadding.y,
-					bottom: dim.s.rect.bottom - dim.s.border.bottom - dim.s.scrollbar.bottom - dim.e.rect.bottom + options.viewPadding.y,
+					bottom: dim.s.rect.bottom - dim.s.border.bottom - dim.s.scrollbar.bottom - dim.e.rect.bottom - options.viewPadding.y,
 					left: dim.e.rect.left - (dim.s.rect.left + dim.s.border.left) - options.viewPadding.x,
-					right: dim.s.rect.right - dim.s.border.right - dim.s.scrollbar.right - dim.e.rect.right + options.viewPadding.x
+					right: dim.s.rect.right - dim.s.border.right - dim.s.scrollbar.right - dim.e.rect.right - options.viewPadding.x
 				};
 
 				var animOptions = {};
